@@ -1,13 +1,31 @@
 package com.mycompany.calculatorswing.view;
+
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.canWrite;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.clear;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.clearZero;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.cube;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.delete;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.division;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.getOperation;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.getSolution;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.getValue1;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.imputText;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.multiply;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.percent;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.setOperation;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.setValue1;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.setValue2;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.squareRoot;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.squared;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.sum;
+import static com.mycompany.calculatorswing.model.CalculadoraSwing.sustrat;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-/**
- *
- * @author admin
- */
+
 public class MainWindow extends javax.swing.JFrame {
 
     /**
@@ -75,9 +93,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnPowerThree.setText("x³");
         btnPowerThree.setBorderPainted(false);
-        btnPowerThree.setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         btnPowerThree.setPreferredSize(new java.awt.Dimension(0, 0));
-        btnPowerThree.setSize(new java.awt.Dimension(0, 0));
         btnPowerThree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPowerThreeActionPerformed(evt);
@@ -91,6 +107,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnPowerTwo.setText("x²");
         btnPowerTwo.setPreferredSize(new java.awt.Dimension(0, 0));
+        btnPowerTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPowerTwoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -125,6 +146,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnDivision.setText("÷");
         btnDivision.setPreferredSize(new java.awt.Dimension(0, 0));
+        btnDivision.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDivisionActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 1;
@@ -132,6 +158,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnDivision, gridBagConstraints);
 
         btnPi.setText("π");
+        btnPi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPiActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -139,6 +170,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnPi, gridBagConstraints);
 
         btnSeven.setText("7");
+        btnSeven.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSevenActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -147,6 +183,11 @@ public class MainWindow extends javax.swing.JFrame {
 
         btnEight.setText("8");
         btnEight.setToolTipText("");
+        btnEight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEightActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -154,6 +195,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnEight, gridBagConstraints);
 
         btnNine.setText("9");
+        btnNine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNineActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
@@ -161,6 +207,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnNine, gridBagConstraints);
 
         btnMultiply.setText("×");
+        btnMultiply.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMultiplyActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
@@ -168,6 +219,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnMultiply, gridBagConstraints);
 
         btnPosOrNeg.setText("+/-");
+        btnPosOrNeg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPosOrNegActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
@@ -175,6 +231,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnPosOrNeg, gridBagConstraints);
 
         btnFour.setText("4");
+        btnFour.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFourActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -182,6 +243,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnFour, gridBagConstraints);
 
         btnFive.setText("5");
+        btnFive.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiveActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -189,6 +255,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnFive, gridBagConstraints);
 
         btnSix.setText("6");
+        btnSix.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSixActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
@@ -196,6 +267,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnSix, gridBagConstraints);
 
         btnSubtract.setText("-");
+        btnSubtract.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubtractActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 3;
@@ -203,6 +279,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnSubtract, gridBagConstraints);
 
         btnDelete.setText("⌫");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
@@ -210,6 +291,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnDelete, gridBagConstraints);
 
         btnOne.setText("1");
+        btnOne.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOneActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -217,6 +303,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnOne, gridBagConstraints);
 
         btnTwo.setText("2");
+        btnTwo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTwoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -224,6 +315,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnTwo, gridBagConstraints);
 
         btnThree.setText("3");
+        btnThree.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThreeActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
@@ -244,6 +340,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnSumatory, gridBagConstraints);
 
         btnClearScreen.setText("CE");
+        btnClearScreen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearScreenActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
@@ -251,6 +352,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnClearScreen, gridBagConstraints);
 
         btnZero.setText("0");
+        btnZero.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZeroActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
@@ -258,6 +364,11 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnZero, gridBagConstraints);
 
         btnDot.setText(".");
+        btnDot.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDotActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -265,34 +376,181 @@ public class MainWindow extends javax.swing.JFrame {
         getContentPane().add(btnDot, gridBagConstraints);
 
         btnEquals.setText("=");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        getContentPane().add(btnEquals, gridBagConstraints);
+        btnEquals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEqualsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEquals, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPowerThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerThreeActionPerformed
-        // TODO add your handling code here:
+        setValue1(jLabel1.getText());
+        cube();
+        jLabel1.setText(getSolution());
     }//GEN-LAST:event_btnPowerThreeActionPerformed
 
     private void btnSquareRootActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSquareRootActionPerformed
-        // TODO add your handling code here:
+        setValue1(jLabel1.getText());
+        squareRoot();
+        jLabel1.setText(getSolution());
     }//GEN-LAST:event_btnSquareRootActionPerformed
 
     private void btnPercentageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPercentageActionPerformed
-        // TODO add your handling code here:
+        if(getValue1() != ""){
+          
+            if(jLabel1.getText().charAt(jLabel1.getText().length()-1) == '%')   jLabel1.setText(jLabel1.getText().substring(0, jLabel1.getText().length()-1));
+            else                                                                jLabel1.setText(jLabel1.getText()+"%"); 
+        }
     }//GEN-LAST:event_btnPercentageActionPerformed
 
     private void btnSumatoryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSumatoryActionPerformed
-        // TODO add your handling code here:
+        setOperation("+");
+        if(getValue1() == ""){
+            setValue1(jLabel1.getText());
+            jLabel1.setText("0");
+        }
     }//GEN-LAST:event_btnSumatoryActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFourActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'4'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnFourActionPerformed
+
+    private void btnZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnZeroActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'0'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnZeroActionPerformed
+
+    private void btnOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOneActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'1'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnOneActionPerformed
+
+    private void btnTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTwoActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'2'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnTwoActionPerformed
+
+    private void btnThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThreeActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'3'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnThreeActionPerformed
+
+    private void btnFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiveActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'5'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnFiveActionPerformed
+
+    private void btnSixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSixActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'6'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnSixActionPerformed
+
+    private void btnSevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSevenActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'7'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnSevenActionPerformed
+
+    private void btnEightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEightActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'8'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnEightActionPerformed
+
+    private void btnNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNineActionPerformed
+        if(canWrite())  jLabel1.setText(imputText(jLabel1.getText(),'9'));
+        jLabel1.setText(clearZero(jLabel1.getText()));
+    }//GEN-LAST:event_btnNineActionPerformed
+
+    private void btnPosOrNegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPosOrNegActionPerformed
+        if(canWrite()){
+            if(jLabel1.getText().charAt(0) == '-')     jLabel1.setText(jLabel1.getText().substring(1));
+            else                                            jLabel1.setText("-"+jLabel1.getText());
+        }
+    }//GEN-LAST:event_btnPosOrNegActionPerformed
+
+    private void btnDotActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDotActionPerformed
+        if(canWrite() == !jLabel1.getText().contains("."))        jLabel1.setText(imputText(jLabel1.getText(),'.'));
+    }//GEN-LAST:event_btnDotActionPerformed
+
+    private void btnPiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPiActionPerformed
+        if(canWrite())        jLabel1.setText("3.14159265359");
+    }//GEN-LAST:event_btnPiActionPerformed
+
+    private void btnEqualsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEqualsActionPerformed
+
+        if(getValue1() != ""){
+             
+            if(jLabel1.getText().charAt(jLabel1.getText().length()-1) == '%'){
+                setValue2(percent(jLabel1.getText()));
+            }else{
+                setValue2(jLabel1.getText());
+            }
+             switch(getOperation()){
+                 case "+":
+                     sum();
+                     jLabel1.setText(getSolution());
+                     break;
+                 case "-":
+                     sustrat();
+                     jLabel1.setText(getSolution());
+                     break;
+                 case "*":
+                     multiply();
+                     jLabel1.setText(getSolution());
+                     break;
+                 case "/":
+                     division();
+                     jLabel1.setText(getSolution());
+                     break;
+             }
+        }       
+    }//GEN-LAST:event_btnEqualsActionPerformed
+
+    private void btnPowerTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPowerTwoActionPerformed
+        setValue1(jLabel1.getText());
+        squared();
+        jLabel1.setText(getSolution());
+    }//GEN-LAST:event_btnPowerTwoActionPerformed
+
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
+        if(jLabel1.getText() != "0" && jLabel1.getText() != "-0")    jLabel1.setText(delete(jLabel1.getText()));
+        if(jLabel1.getText() == "")                                  jLabel1.setText("0");
+        if(jLabel1.getText() == "-")                                  jLabel1.setText("-0");
+    }//GEN-LAST:event_btnDeleteActionPerformed
+
+    private void btnClearScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearScreenActionPerformed
+        jLabel1.setText("0");
+        clear();
+    }//GEN-LAST:event_btnClearScreenActionPerformed
+
+    private void btnMultiplyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultiplyActionPerformed
+        setOperation("*");
+        if(getValue1() == ""){
+            setValue1(jLabel1.getText());
+            jLabel1.setText("0");
+        }
+    }//GEN-LAST:event_btnMultiplyActionPerformed
+
+    private void btnSubtractActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubtractActionPerformed
+        setOperation("-");
+        if(getValue1() == ""){
+            setValue1(jLabel1.getText());
+            jLabel1.setText("0");
+        }
+    }//GEN-LAST:event_btnSubtractActionPerformed
+
+    private void btnDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivisionActionPerformed
+        setOperation("/");
+        if(getValue1() == ""){
+            setValue1(jLabel1.getText());
+            jLabel1.setText("0");
+        }
+    }//GEN-LAST:event_btnDivisionActionPerformed
+
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

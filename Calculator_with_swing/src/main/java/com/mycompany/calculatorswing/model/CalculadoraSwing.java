@@ -3,32 +3,41 @@ package com.mycompany.calculatorswing.model;
 
 public class CalculadoraSwing {
 
-    private static String x1;
-    private static String x2;
-    private static String solution;
+    private static String value1 = "";
+    private static String value2 = "";
+    private static String solution = "";
+    private static String operation = "";
 
-    public static String getX1() {
-        return x1;
+    public static String getValue1() {
+        return value1;
     }
 
-    public static String getX2() {
-        return x2;
+    public static String getValue2() {
+        return value2;
     }
     
     public static String getSolution() {
         return solution;
     }
-
-    public static void setX1(String x1) {
-        CalculadoraSwing.x1 = x1;
+    
+    public static String getOperation() {
+        return operation;
     }
 
-    public static void setX2(String x2) {
-        CalculadoraSwing.x2 = x2;
+    public static void setValue1(String value1) {
+        CalculadoraSwing.value1 = value1;
+    }
+
+    public static void setValue2(String value2) {
+        CalculadoraSwing.value2 = value2;
     }
     
     public static void setSolution(String solution) {
         CalculadoraSwing.solution = solution;
+    }
+    
+    public static void setOperation(String operation) {
+        CalculadoraSwing.operation = operation;
     }
     
     
@@ -43,79 +52,115 @@ public class CalculadoraSwing {
         
     
     public static void sum(){
-        float f1 = stringToFloat(x1);
-        float f2 = stringToFloat(x2);
-        
-        float fsolution = f1 + f2;
-        
-        x1 = "";
-        x2 = "";
-        solution = floatToString(fsolution);
-    }
-    
-    public static void sustrat(){
-        float f1 = stringToFloat(x1);
-        float f2 = stringToFloat(x2);
-        
-        float fsolution = f1 - f2;
-        
-        x1 = "";
-        x2 = "";
-        solution = floatToString(fsolution);
-    }
-    
-    public static void multiply(){
-        float f1 = stringToFloat(x1);
-        float f2 = stringToFloat(x2);
-        
-        float fsolution = f1 * f2;
-        
-        x1 = "";
-        x2 = "";
-        solution = floatToString(fsolution);
-    }
-    
-    public static void division(){
-        float f1 = stringToFloat(x1);
-        float f2 = stringToFloat(x2);
-        
-        if(f2==0){
-            x1 = "";
-            x2 = "";
-            solution = "Syntax Error";
-        }else{
-            float fsolution = f1 / f2; 
+        try{
+            float f1 = stringToFloat(value1);
+            float f2 = stringToFloat(value2);
+
+            float fsolution = f1 + f2;
+            solved(fsolution); 
             
-            x1 = "";
-            x2 = "";
-            solution = floatToString(fsolution);
+        }catch(Exception e){
+            error(); 
         }       
     }
     
-    public static void squareRoot(String a){
-        float f1 = stringToFloat(x1);
-        
-        if(f1<0){
-            x1 = "";
-            x2 = "";
-            solution = "Syntax Error";
-        }else{
-            float fsolution = (float) Math.sqrt(f1); 
+    public static void sustrat(){
+        try{
+            float f1 = stringToFloat(value1);
+            float f2 = stringToFloat(value2);
+
+            float fsolution = f1 - f2;
+            solved(fsolution); 
             
-            x1 = "";
-            x2 = "";
-            solution = floatToString(fsolution);
+        }catch(Exception e){
+            error(); 
+        }
+    }
+    
+    public static void multiply(){
+        try{
+            float f1 = stringToFloat(value1);
+            float f2 = stringToFloat(value2);
+
+            float fsolution = f1 * f2;
+            solved(fsolution); 
+            
+        }catch(Exception e){
+            error(); 
+        }
+    }
+    
+    public static void division(){
+        try{
+            float f1 = stringToFloat(value1);
+            float f2 = stringToFloat(value2);
+
+            if(f2==0){
+                error(); 
+            }else{
+                float fsolution = f1 / f2; 
+                solved(fsolution); 
+            }
+        }catch(Exception e){
+            error(); 
+        }               
+    }
+    
+    public static void squareRoot(){
+        try{
+            float f1 = stringToFloat(value1); 
+            
+            if(f1<0){
+                error(); 
+            }else{
+                float fsolution = (float) Math.sqrt(f1); 
+                solved(fsolution); 
+            }
+        }catch(Exception e){
+            error(); 
         }
     }
     
     public static void squared(){
-        float f1 = stringToFloat(x1);
+        try{
+            float f1 = stringToFloat(value1);
         
-        float fsolution = f1*f1;
+            float fsolution = f1*f1;
+            solved(fsolution); 
+            
+        }catch(Exception e){
+            error(); 
+        }        
+    }
+    
+    public static void cube(){
+        try{
+            float f1 = stringToFloat(value1);
+
+            float fsolution = f1*f1*f1;
+            solved(fsolution);  
+            
+        }catch(Exception e){
+            error();  
+        }                 
+    }
+    
+    public static String percent(String value){
+        float f1 = stringToFloat(value1);
         
-        x1 = "";
-        x2 = "";
-        solution = floatToString(fsolution);        
+        value = value.substring(0,value.length()-1);
+        float f2 = f1 * ((stringToFloat(value))/100);
+        
+        return floatToString(f2);
+    }
+    
+    
+    public static String imputText(String text, char c){
+        
+        if(text.charAt(text.length()-1) == '%')     text=text.substring(0,text.length()-1)+c+'%';
+        else                                        text+=c;
+        
+        return text;
     }
     
     public static String delete(String text){
@@ -123,7 +168,40 @@ public class CalculadoraSwing {
     }
     
     public static void clear(){
-        x1 = "";
-        x2 = "";
+        value1 = "";
+        value2 = "";
+        solution = "";
+        operation = "";
     } 
+    
+    public static String clearZero(String value){    
+        if(value.charAt(0) == '0' && value.charAt(1)!= '.'){
+            return value.substring(1);
+        }                                         
+        else if(value.charAt(0) == '-' && value.charAt(1) == '0' && value.charAt(2)!= '.'){
+            return ("-"+value.substring(2));
+        }else{
+            return value;
+        }         
+    }
+    
+    public static boolean canWrite(){
+        if(solution == "Syntax Error")  return false;
+        if(solution == "Infinity")      return false;
+        else                            return true;
+    }
+    
+    public static void error(){
+        value1 = "";
+        value2 = "";
+        solution = "Syntax Error";
+        operation = ""; 
+    }
+    
+    public static void solved(float fsolution){
+        value1 = "";
+        value2 = "";
+        solution = floatToString(fsolution);
+        operation = "";
+    }
 }
