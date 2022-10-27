@@ -53,10 +53,10 @@ public class CalculadoraSwing {
     
     public static void sum(){
         try{
-            float f1 = stringToFloat(value1);
-            float f2 = stringToFloat(value2);
+            Float f1 = stringToFloat(value1);
+            Float f2 = stringToFloat(value2);
 
-            float fsolution = f1 + f2;
+            Float fsolution = f1 + f2;
             solved(fsolution); 
             
         }catch(Exception e){
@@ -66,10 +66,10 @@ public class CalculadoraSwing {
     
     public static void sustrat(){
         try{
-            float f1 = stringToFloat(value1);
-            float f2 = stringToFloat(value2);
+            Float f1 = stringToFloat(value1);
+            Float f2 = stringToFloat(value2);
 
-            float fsolution = f1 - f2;
+            Float fsolution = f1 - f2;
             solved(fsolution); 
             
         }catch(Exception e){
@@ -79,10 +79,10 @@ public class CalculadoraSwing {
     
     public static void multiply(){
         try{
-            float f1 = stringToFloat(value1);
-            float f2 = stringToFloat(value2);
+            Float f1 = stringToFloat(value1);
+            Float f2 = stringToFloat(value2);
 
-            float fsolution = f1 * f2;
+            Float fsolution = f1 * f2;
             solved(fsolution); 
             
         }catch(Exception e){
@@ -92,13 +92,13 @@ public class CalculadoraSwing {
     
     public static void division(){
         try{
-            float f1 = stringToFloat(value1);
-            float f2 = stringToFloat(value2);
+            Float f1 = stringToFloat(value1);
+            Float f2 = stringToFloat(value2);
 
             if(f2==0){
                 error(); 
             }else{
-                float fsolution = f1 / f2; 
+                Float fsolution = f1 / f2; 
                 solved(fsolution); 
             }
         }catch(Exception e){
@@ -108,12 +108,12 @@ public class CalculadoraSwing {
     
     public static void squareRoot(){
         try{
-            float f1 = stringToFloat(value1); 
+            Float f1 = stringToFloat(value1); 
             
             if(f1<0){
                 error(); 
             }else{
-                float fsolution = (float) Math.sqrt(f1); 
+                Float fsolution = (float) Math.sqrt(f1); 
                 solved(fsolution); 
             }
         }catch(Exception e){
@@ -123,9 +123,9 @@ public class CalculadoraSwing {
     
     public static void squared(){
         try{
-            float f1 = stringToFloat(value1);
+            Float f1 = stringToFloat(value1);
         
-            float fsolution = f1*f1;
+            Float fsolution = f1*f1;
             solved(fsolution); 
             
         }catch(Exception e){
@@ -135,7 +135,7 @@ public class CalculadoraSwing {
     
     public static void cube(){
         try{
-            float f1 = stringToFloat(value1);
+            Float f1 = stringToFloat(value1);
 
             float fsolution = f1*f1*f1;
             solved(fsolution);  
@@ -146,10 +146,10 @@ public class CalculadoraSwing {
     }
     
     public static String percent(String value){
-        float f1 = stringToFloat(value1);
+        Float f1 = stringToFloat(value1);
         
         value = value.substring(0,value.length()-1);
-        float f2 = f1 * ((stringToFloat(value))/100);
+        Float f2 = f1 * ((stringToFloat(value))/100);
         
         return floatToString(f2);
     }

@@ -381,11 +381,7 @@ public class MainWindow extends javax.swing.JFrame {
                 btnEqualsActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        getContentPane().add(btnEquals, gridBagConstraints);
+        getContentPane().add(btnEquals, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -520,9 +516,9 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPowerTwoActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        if(jLabel1.getText() != "0" && jLabel1.getText() != "-0")    jLabel1.setText(delete(jLabel1.getText()));
-        if(jLabel1.getText() == "")                                  jLabel1.setText("0");
-        if(jLabel1.getText() == "-")                                  jLabel1.setText("-0");
+        if(jLabel1.getText() != "0" && jLabel1.getText() != "-0" && canWrite())     jLabel1.setText(delete(jLabel1.getText()));
+        if(jLabel1.getText() == "")                                                 jLabel1.setText("0");
+        if(jLabel1.getText() == "-")                                                jLabel1.setText("-0");
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnClearScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearScreenActionPerformed
