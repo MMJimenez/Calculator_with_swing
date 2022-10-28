@@ -381,7 +381,11 @@ public class MainWindow extends javax.swing.JFrame {
                 btnEqualsActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEquals, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        getContentPane().add(btnEquals, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
